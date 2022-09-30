@@ -1,0 +1,9 @@
+n lugar de requerir handlebars de la forma:
+- const exphbs = require('express-handlebars');
+Tenes que hacerlo de la forma:
+-const {engine} = require('express-handlebars');
+
+Y despues cuando configuras el motor en app.engine pone:
+app.engine('.hbs', engine({
+   (y aca pones toda la configuracion del motor que esta en el video)
+}));

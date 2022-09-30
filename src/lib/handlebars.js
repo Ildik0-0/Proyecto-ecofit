@@ -1,0 +1,1 @@
+//lo que se quiera hacer en handlebar se hace atraves de los helpers 

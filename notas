@@ -1,9 +1,14 @@
-n lugar de requerir handlebars de la forma:
-- const exphbs = require('express-handlebars');
-Tenes que hacerlo de la forma:
--const {engine} = require('express-handlebars');
+//n lugar de requerir handlebars de la forma:
+//- const exphbs = require('express-handlebars');
+//Tenes que hacerlo de la forma:
+//-const {engine} = require('express-handlebars');
 
-Y despues cuando configuras el motor en app.engine pone:
-app.engine('.hbs', engine({
-   (y aca pones toda la configuracion del motor que esta en el video)
-}));
+//Y despues cuando configuras el motor en app.engine pone:
+//app.engine('.hbs', engine({
+  // (y aca pones toda la configuracion del motor que esta en el video)
+//}));
+
+//mysql -u root -p --port=3308 //pc ire
+
+//PRIMARY KEY -- son todas las que empiezan con ID(--)
+//FOREING KEY -- don las que terminan en (---)ID

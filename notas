@@ -12,3 +12,6 @@
 
 //PRIMARY KEY -- son todas las que empiezan con ID(--)
 //FOREING KEY -- don las que terminan en (---)ID
+///https://www.youtube.com/watch?v=qJ5R9WTW0_E ---de aqui me basando
+
+//!!IMPORTANTE !!! --- npm run dev -- correr antes de cambiar algo /// esto inicia todo

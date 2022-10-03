@@ -15,3 +15,11 @@
 ///https://www.youtube.com/watch?v=qJ5R9WTW0_E ---de aqui me basando
 
 //!!IMPORTANTE !!! --- npm run dev -- correr antes de cambiar algo /// esto inicia todo
+
+
+//const { nom_cliente, password } = req.body;
+//const newuser = {
+  // nom_cliente,
+  // password
+//};
+//await pool.query('INSERT INTO cliente set ?', [newuser]);

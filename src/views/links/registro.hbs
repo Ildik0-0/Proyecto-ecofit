@@ -1,0 +1,45 @@
+{{!--FORMULARIO USUARIO--}}
+<div class="container p-4 ">
+    <div class="card" > {{!--cajista donde esta el formulario--}}
+        <div class="card-body">
+            <form action="/links/registro" method="POST" >
+
+                <div class="container p-4 col-md-4 form-group">
+                    <label for="text" class="form-label">Nombre:</label>
+                    <input type="text" class="form-control " id="nombre_user" placeholder="Nombre Usuario" name="nom_cliente" autofocus>
+                </div>
+
+                <div class="container p-4 col-md-4 form-group">
+                    <label for="text" class="form-label">Apellido:</label>
+                    <input type="text" class="form-control " id="apellido_user" placeholder="Apellido" name="apellido_cliente" autofocus>
+                </div>
+
+                <div class="container p-4 col-md-4 form-group">
+                    <label for="text" class="form-label">Correo:</label>
+                    <input type="email" class="form-control " id="email-user" placeholder="Correo" name="email_cliente" autofocus>
+                </div>
+
+                 <div class="container p-4 col-md-4 form-group">
+                    <label for="text" class="form-label">Telefono:</label>
+                    <input type="text" class="form-control " id="" placeholder="Telefono" name="telefono" autofocus>
+                </div>
+
+                 <div class="container p-4 col-md-4 form-group">
+                    <label for="text" class="form-label">RUT:</label>
+                    <input type="text" class="form-control " id="" placeholder="12212121-k" name="rut_cliente" autofocus>
+                </div>
+
+                <div class="container p-4 col-md-4 form-group">
+                    <label for="pwd" class="form-label">Password:</label>
+                    <input type="password" class="form-control" id="pwd-user" placeholder="Enter password" name="password" autofocus>
+                </div>
+
+                <div class= "container p-4 col-md-4 form-group">
+                     
+                    <button type="submit" class="btn btn-primary  col-md-4">Submit</button>
+                </div>
+                
+            </form>
+        </div>
+    </div>
+</div>

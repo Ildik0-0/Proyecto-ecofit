@@ -12,7 +12,7 @@ const app = express();
 app.set('port', process.env.PORT || 4000); //si existe un puerto que se use de lo contrario se toma el 4000
 app.set('views', path.join(__dirname, 'views')); //le digo al programa donde esta la carpeta views
 app.engine('.hbs', engine({
-    defaultLayout: 'main',
+    defaultLayout: 'main', //archivo por defecto
     layoutsDir: path.join(app.get('views'), 'layouts'),  //join junta directorios //concatenado con layouts
     partialsDir: path.join(app.get('views'), 'partials'),
     extname: '.hbs', //esta funcion esta en la carpeta lib en handlebars

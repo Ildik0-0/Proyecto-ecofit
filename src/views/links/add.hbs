@@ -1,0 +1,25 @@
+{{!--FORMULARIO USUARIO--}}
+<div class="container p-4 ">
+    <div class="card mx-auto" > {{!--cajista donde esta el formulario--}}
+        <div class="card-body">
+            <form action="/links/add" method="POST" >
+
+                <div class="container p-4 col-md-4 form-group">
+                    <label for="text" class="form-label">Nombre Usuario:</label>
+                    <input type="text" class="form-control " placeholder="Nombre Usuario" name="nom_cliente" autofocus>
+                </div>
+
+                <div class="container p-4 col-md-4 form-group">
+                    <label for="pwd" class="form-label">Password:</label>
+                    <input type="password" class="form-control" placeholder="Enter password" name="password" autofocus>
+                </div>
+
+                <div class= "container p-4 col-md-4 form-group">
+                     
+                    <button type="submit" class="btn btn-success  col-md-4">Submit</button>
+                </div>
+                
+            </form>
+        </div>
+    </div>
+</div>

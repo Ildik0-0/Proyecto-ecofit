@@ -1,139 +1,117 @@
-CREATE DATABASE ecofit;
+CREATE TABLE clientes (
+    id INT(11) NOT NULL,
+    nom_cliente VARCHAR(50),
+    apellido_cliente VARCHAR(50),
+    telefono_cliente VARCHAR(50),
+    direccion_cliente VARCHAR(50),
+    rut_cliente VARCHAR(50),
+    email_cliente VARCHAR(320),
+    contacto_cliente VARCHAR(50),
+    secreto VARCHAR(10) NOT NULL,
+   PRIMARY KEY (id));
 
-USE ecofit;
+ALTER TABLE clientes
+    MODIFY id INT NOT NULL AUTO_INCREMENT, AUTO_INCREMENT = 1;
 
---tabla de los clientes
-CREATE TABLE cliente(
+
+CREATE TABLE proveedores(
 
     id INT(11) NOT NULL,
-    nom_cliente CHAR(30) NOT NULL,
-    apellido_cliente CHAR(30) NOT NULL,
-    password VARCHAR(60) NOT NULL,
-    telefono CHAR(50) NOT NULL,
-    direccion_cliente VARCHAR(50) NOT NULL,
-    rut_cliente VARCHAR(50) NOT NULL,
-    email_cliente VARCHAR(320) NOT NULL,
-    contacto_cliente CHAR(50) NOT NULL
-
-);
-
-ALTER TABLE cliente
-    ADD PRIMARY KEY (id);
-
-ALTER TABLE cliente
-    MODIFY id INT(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT = 1;   
-
-
---tabals de las ventas
-CREATE TABLE venta(
-
-    id_venta INT(11) NOT NULL,
-    fecha_venta TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    cantidad_venta CHAR(50) NOT NULL,
-    modo_pago VARCHAR(30) NOT NULL,
-    cliente_id INT(11),
-    productoventa_id INT(11),
-    envio_id INT(11),
-    CONSTRAINT fk_cliente FOREIGN KEY (cliente_id) REFERENCES cliente(id),
-    CONSTRAINT fk_producto FOREIGN KEY ( productoventa_id) REFERENCES producto(id_producto),
-    CONSTRAINT fk_envio FOREIGN KEY (envio_id) REFERENCES envio(id_envio)
+    nom_proveedor VARCHAR(30),
+    telefono_proveedor VARCHAR(50),
+    email_proveedor VARCHAR(50),
+    direccion_proveedor VARCHAR(50),
+    contacto_proveedor VARCHAR(50),
+    articulo VARCHAR(30),
+    cantidad_articulo INT(10),
+    valor_compra DECIMAL(13,2),
+    PRIMARY KEY (id)
     
 
 );
 
-ALTER TABLE venta
-    ADD PRIMARY KEY (id_venta);
+ALTER TABLE proveedores
+    MODIFY id INT NOT NULL AUTO_INCREMENT, AUTO_INCREMENT = 1;
 
-ALTER TABLE venta
-    MODIFY id_venta INT(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT = 1; 
 
---TABLE de productos
 
-CREATE TABLE producto (
+CREATE TABLE productos (
 
-    id_producto INT(11) NOT NULL,
-    nom_producto CHAR(30) NOT NULL,
-    description TEXT,
-    precio_producto DECIMAL(10) NOT NULL,
-    tipo_producto CHAR(30) NOT NULL,
-    stock_producto CHAR(30) NOT NULL,
-    proveedor_id INT(11),
-    CONSTRAINT fk_proveedor FOREIGN KEY (proveedor_id) REFERENCES proveedor(id_proveedor)
-
+    id INT(11) NOT NULL,
+    nom_producto VARCHAR(30),
+    descripcion VARCHAR(150),
+    precio_producto DECIMAL(13,2),
+    tipo_producto VARCHAR(30),
+    stock_producto INT(30),
+    proveedor_id INT(11) NOT NULL,
+    PRIMARY KEY (id),
+    FOREIGN KEY (proveedor_id) REFERENCES proveedores(id)
 );
 
-ALTER TABLE producto 
-    ADD PRIMARY KEY (id_producto);
+ALTER TABLE productos
+    MODIFY id INT NOT NULL AUTO_INCREMENT, AUTO_INCREMENT = 1;
 
-ALTER TABLE producto 
-    MODIFY id_producto INT(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT = 1; 
+CREATE TABLE transportes (
 
---tablas de envios 
-CREATE TABLE envio(
-
-    id_envio INT(11) NOT NULL,
-    fecha_envio DATETIME,
-    transporte_id INT(11),
-    CONSTRAINT fk_transporte FOREIGN KEY (transporte_id) REFERENCES transporte(id_transporte)
-);
-
-ALTER TABLE envio 
-    ADD PRIMARY KEY (id_envio);
-
-ALTER TABLE envio
-    MODIFY id_envio INT(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT = 1; 
-
---tabla de transporte
-CREATE TABLE transporte (
-
-     id_transporte INT(11) NOT NULL,
-     nom_transporte CHAR(30) NOT NULL,
-     direccion_transporte VARCHAR(50) NOT NULL,
-     description_transporte TEXT
+     id INT(11) NOT NULL,
+     nom_transporte VARCHAR(30),
+     descripcion_transporte VARCHAR(150),
+     PRIMARY KEY (id)
      
 );
 
-ALTER TABLE transporte
-    ADD PRIMARY KEY (id_transporte);
-
-ALTER TABLE transporte
-    MODIFY id_transporte INT(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT = 1;
+ALTER TABLE transportes
+    MODIFY id INT NOT NULL AUTO_INCREMENT, AUTO_INCREMENT = 1;
 
 
---tabla de los proveedores 
-CREATE TABLE proveedor(
 
-    id_proveedor INT(11) NOT NULL,
-    nom_empresa CHAR(30) NOT NULL,
-    telefono_empresa CHAR(50) NOT NULL,
-    email_proveedor VARCHAR(320) NOT NULL,
-    direccion_proveedor VARCHAR(50) NOT NULL,
-    contanto_proveedor VARCHAR(50) NOT NULL
+CREATE TABLE envios(
+
+    id INT(11) NOT NULL,
+    fecha_envio DATE,
+    transporte_id INT(11) NOT NULL,
+    direccion_envio VARCHAR(30),
+    PRIMARY KEY (id),
+    FOREIGN KEY (transporte_id) REFERENCES transportes(id)
 
 );
 
+ALTER TABLE envios
+    MODIFY id INT NOT NULL AUTO_INCREMENT, AUTO_INCREMENT = 1;
 
-ALTER TABLE proveedor
-    ADD PRIMARY KEY (id_proveedor);
 
-ALTER TABLE transporte
-    MODIFY id_proveedor INT(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT = 1;
+
+
+
+CREATE TABLE compras(
+
+    id INT(11) NOT NULL, 
+    fecha_compra DATE,
+    valor_compra DECIMAL(13,2),
+    producto_id INT(11) NOT NULL,
+    PRIMARY KEY (id),
+    FOREIGN KEY (producto_id) REFERENCES productos(id)
     
+);
 
---tabla de compra
-CREATE TABLE compra(
+ ALTER TABLE compras
+    MODIFY id INT NOT NULL AUTO_INCREMENT, AUTO_INCREMENT = 1;
 
-    id_compra INT(11) NOT NULL,
-    fecha_compra TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    pago_compra VARCHAR(30) NOT NULL,
-    cantidad_compra VARCHAR(50) NOT NULL,
+CREATE TABLE ventas(
+
+    id INT(11) NOT NULL,
+    fecha_venta DATE,
+    valor_venta DECIMAL(13,2),
+    modo_pago VARCHAR(10),
     producto_id INT(11),
-    CONSTRAINT fk_producto FOREIGN KEY (producto_id) REFERENCES producto(id_producto)
+    cliente_id INT(11),
+    envio_id INT(11),
+    PRIMARY KEY (id),
+    FOREIGN KEY (producto_id) REFERENCES productos(id),
+    FOREIGN KEY (cliente_id) REFERENCES clientes(id),
+    FOREIGN KEY (envio_id) REFERENCES envios(id)
+    
 );
 
-ALTER TABLE compra
-    ADD PRIMARY KEY (id_compra);
-
-ALTER TABLE compra
-    MODIFY id_compra INT(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT = 1;
-    
+ALTER TABLE ventas
+    MODIFY id INT NOT NULL AUTO_INCREMENT, AUTO_INCREMENT = 1;

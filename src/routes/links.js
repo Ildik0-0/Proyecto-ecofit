@@ -23,18 +23,21 @@ router.get('/registro', (req, res) => {
     res.render('links/registro'); //formulario usuario de registro
 });
 router.post('/registro', async (req, res) => {
-    const { nom_cliente, apellido_cliente, 
-        email_cliente, telefono, rut_cliente, password} = req.body;
-        const newregistro = {
-                nom_cliente, 
-                apellido_cliente, 
-                email_cliente, 
-                telefono, 
-                rut_cliente, 
-                password
+   const {nom_cliente, apellido_cliente, email_cliente, telefono_cliente,
+    rut_cliente, direccion_cliente, contacto_cliente, secreto} = req.body;
+       const newregistro = {
+        nom_cliente,
+        apellido_cliente,
+        email_cliente,
+        telefono_cliente,
+        rut_cliente,
+        direccion_cliente,
+        contacto_cliente,
+        secreto
+           
         };
        await pool.query('INSERT INTO cliente set ?', [newregistro]);
-        res.send('recivido el registro');
+        res.send('recibido el registro');
 });
 
 

@@ -1,6 +1,0 @@
-git status
-git add . ---(. = all)
-git status
-git commit -m "--"
-git remote add origin https://github.com/Ildik0-0/Proyecto-ecofit.git 
-git push

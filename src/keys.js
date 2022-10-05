@@ -2,9 +2,10 @@
 module.exports ={
 
     database: {
-        host: 'localhost:3308',
+        host: 'localhost',
+        port : 3308,
         user: 'root',
         password:'admin',
-        database: 'ecofit',
+        database: 'ecofit'
     }
 };

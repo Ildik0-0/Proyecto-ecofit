@@ -18,7 +18,6 @@ router.post('/add', async (req, res) => {
 
 //---------------------//
 
-
 router.get('/registro', (req, res) => {
     res.render('links/registro'); //formulario usuario de registro
 });

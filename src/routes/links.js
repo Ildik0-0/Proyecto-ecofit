@@ -36,7 +36,7 @@ router.post('/registro', async (req, res) => {
         secreto
            
         };
-       await pool.query('INSERT INTO cliente set ?', [newregistro]);
+       await pool.query('INSERT INTO clientes set ?', [newregistro]);
         res.send('recibido el registro');
 });
 

@@ -1,0 +1,49 @@
+<div class="container p-4" >
+
+    <div class="row">
+
+        
+
+            {{#each viewproducto}}
+
+                <div class="col-md-3" style="width: 18rem;">
+                    <div class="card-text-center">
+                        <div class="card-body container">
+
+                           
+                                <img src="" class="card-img-top" alt="imagen que no tengo">
+                                <div class="card-body">
+                                    <h3 class="card-title">
+                                        {{nom_producto}}
+                                    </h3>
+                                    <p class="card-text">
+                                        {{precio_producto}}
+                                    </p>
+                                    <p class="card-text">
+                                        {{descripcion}}
+                                    </p>
+                                    <a href="/links/delete/{{id}}" class="btn btn-danger">Borrar</a>
+                                   <a href="/links/edit/{{id}}" class="btn btn-primary">Editar</a>
+                                </div>    
+                        
+                        </div>          
+                    
+                    </div>   
+                </div>
+
+            {{else}}
+            <div class="col-md-4 mx-auto" >
+                <div class="card card-body text-center">
+                    <p> No existen productos guardados </p>
+                    <a href="/links/listaproducto"> Crear Producto!</a>
+                </div>
+            </div>
+
+            {{/each}}
+
+    </div>
+
+   
+
+
+</div>

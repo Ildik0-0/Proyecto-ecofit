@@ -18,6 +18,8 @@ router.post('/add', async (req, res) => {
 
 //---------------------//
 
+
+//Crud Rsgistro
 router.get('/registro', (req, res) => {
     res.render('links/registro'); //formulario usuario de registro
 });
@@ -38,6 +40,7 @@ router.post('/registro', async (req, res) => {
        await pool.query('INSERT INTO clientes set ?', [newregistro]);
         res.send('recibido el registro');
 });
+
 
 
 

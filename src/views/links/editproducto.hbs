@@ -2,31 +2,31 @@
 <div class="container p-4 ">
     <div class="card" > {{!--cajista donde esta el formulario--}}
         <div class="card-body">
-            <form action="/links/listaproducto" method="POST" >
+            <form action="/links/edit/{{editproducto.id}}" method="POST" >
 
                 <div class="container p-4 col-md-4 form-group">
                     <label for="text" class="form-label">Nombre Producto:</label>
-                    <input type="text" class="form-control " id="" placeholder="Nombre Producto" name="nom_producto" autofocus>
+                    <input type="text"  value="{{editproducto.nom_producto}}" class="form-control " placeholder="Nombre Producto" name="nom_producto" autofocus>
                 </div>
 
                 <div class="container p-4 col-md-4 form-group">
                     <label for="text" class="form-label">Precio:</label>
-                    <input type="text" class="form-control " id="" placeholder="$" name="precio_producto" autofocus>
+                    <input type="text" value="{{editproducto.precio_producto}}" class="form-control " id="" placeholder="$" name="precio_producto" autofocus>
                 </div>
 
                 <div class="container p-4 col-md-4 form-group">
                     <label for="text" class="form-label">Tipo:</label>
-                    <input type="text" class="form-control " id="" placeholder="Tipo" name="tipo_producto" autofocus>
+                    <input type="text" value="{{editproducto.tipo_producto}}" class="form-control " id="" placeholder="Tipo" name="tipo_producto" autofocus>
                 </div>
 
                  <div class="container p-4 col-md-4 form-group">
                     <label for="text" class="form-label">Stock:</label>
-                    <input type="number" class="form-control " id="" placeholder="Cantidad" name="stock_producto" autofocus>
+                    <input type="number" value="{{editproducto.stock_producto}}" class="form-control " id="" placeholder="Cantidad" name="stock_producto" autofocus>
                 </div>
 
                  <div class="container p-4 col-md-4 form-group">
                     <label for="text" class="form-label">Descripción:</label>
-                    <input type="text" class="form-control " id="" placeholder="" name="descripcion" autofocus>
+                    <input type="text"  value="{{editproducto.descripcion}}" class="form-control " id="" placeholder="" name="descripcion" autofocus>
                 </div>
                 
 

@@ -45,6 +45,7 @@ app.use((req, res, next) => {
 app.use(require('./routes'));
 app.use(require('./routes/authentication'));
 app.use('/links', require('./routes/links')); // estos codigo van a dar error si estan vacias las rutas 
+app.use('/links', require('./routes/producto'));
 
 
 //Public // todo el codigo que el navegador puede acceder //carpeta de css, cliente

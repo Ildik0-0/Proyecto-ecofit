@@ -43,7 +43,7 @@ CREATE TABLE productos (
     precio_producto DECIMAL(13,2),
     tipo_producto VARCHAR(30),
     stock_producto INT(30),
-    proveedor_id INT(11) NOT NULL,
+    proveedor_id INT(11),
     PRIMARY KEY (id),
     FOREIGN KEY (proveedor_id) REFERENCES proveedores(id)
 );
@@ -115,3 +115,9 @@ CREATE TABLE ventas(
 
 ALTER TABLE ventas
     MODIFY id INT NOT NULL AUTO_INCREMENT, AUTO_INCREMENT = 1;
+
+
+
+
+!--no agregar este codigo al menos que les salga un erro de Error: ER_NOT_SUPPORTED_AUTH_MODE: esto querie decir que las verciones no son compatibles -
+    ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'admin'; 

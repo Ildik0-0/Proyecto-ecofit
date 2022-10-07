@@ -1,9 +1,10 @@
 const mysql= require('mysql2');
 const {promisify} = require('util');
-
+//const mysql2 = require('mysql2/promise');
 const {database} = require('./keys');
 
 const pool = mysql.createPool(database);
+//const pool = mysql2.createPool(database); 
 
 pool.getConnection((err, connection) => {
 

@@ -2,9 +2,11 @@ const express = require('express');
 const morgan = require('morgan');
 const {engine} = require('express-handlebars');
 const path = require('path');
-//const flash = require('connect-flash');
-//const session = require('express-session');
-//const mysqlstore = require('express-mysql-session');
+const flash = require('connect-flash');//
+const session = require('express-session');
+
+const mysqlstore = require('express-mysql-session') (session);//
+const { database } = require('./keys');
 //const passport =  require('passport');
 
 //inicializacion 
@@ -25,6 +27,14 @@ app.engine('.hbs', engine({
 app.set('view engine', '.hbs'); //el motor para utiliza el hbs
 
 //middlewares //para peticiones de usuario
+
+app.use(session({
+   secret: 'textosecreto',
+   resave: false,
+    saveUninitialized: false,
+   store: new mysqlstore(database)
+}));
+app.use(flash ());//
 app.use(morgan('dev'));//mesaje por consola //que llega al servidor 
 app.use(express.urlencoded({extended: false}));
 app.use(express.json()); //para utilizar el json 
@@ -33,9 +43,10 @@ app.use(express.json()); //para utilizar el json
 
 
 
+
 //global variables //que variables pueden ser accedidas desde la aplicacion 
 app.use((req, res, next) => {
-
+     app.locals.success = req.flash('success');//
     next(); //toma la info del user y la redireciona para continuar 
 
 });
@@ -46,6 +57,7 @@ app.use(require('./routes'));
 app.use(require('./routes/authentication'));
 app.use('/links', require('./routes/links')); // estos codigo van a dar error si estan vacias las rutas 
 app.use('/links', require('./routes/producto'));
+app.use('/auth', require('./routes/perfil'));
 
 
 //Public // todo el codigo que el navegador puede acceder //carpeta de css, cliente

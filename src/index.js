@@ -6,11 +6,12 @@ const flash = require('connect-flash');//
 const session = require('express-session');
 
 const mysqlstore = require('express-mysql-session') (session);//
-const { database } = require('./keys');
-//const passport =  require('passport');
+const { database } = require('./keys');//llamando a la bd
+const passport =  require('passport');
 
 //inicializacion 
 const app = express();
+require('./lib/passport');
 
 
 //setting//configuraciones --- en que puerto va a funcionar el servidor 
@@ -38,6 +39,8 @@ app.use(flash ());//
 app.use(morgan('dev'));//mesaje por consola //que llega al servidor 
 app.use(express.urlencoded({extended: false}));
 app.use(express.json()); //para utilizar el json 
+app.use(passport.initialize());
+app.use(passport.session());
 
 
 
@@ -54,7 +57,9 @@ app.use((req, res, next) => {
 
 //Routes // se define las URL que hacen cuando se visite 
 app.use(require('./routes'));
-app.use(require('./routes/authentication'));
+app.use('/links', require('./routes/authentication'));
+app.use('/mainpage', require('./routes/mainpage'));
+app.use('/mainpage', require('./routes/stock'));//se agregan las rutas para que la pagina pueda hacer el get desde una nueva vista
 app.use('/links', require('./routes/links')); // estos codigo van a dar error si estan vacias las rutas 
 app.use('/links', require('./routes/producto'));
 app.use('/auth', require('./routes/perfil'));

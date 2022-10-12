@@ -6,15 +6,15 @@ const router = express.Router();
 const pool = require('../database');
 
 //INICIO SESION//
-router.get('/add', (req, res) => { //redireccionando al formulario /links/add
-    res.render('links/add');
+//router.get('/add', (req, res) => { //redireccionando al formulario /links/add
+    //res.render('links/add');
 
-});
+//});
 
-router.post('/add', async (req, res) => {
+//router.post('/add', async (req, res) => {
     
-    res.send('mensaje recivido');
-}); //para pedir del formulario
+    //res.send('mensaje recivido');
+//}); //para pedir del formulario
 
 //---------------------//
 
@@ -38,7 +38,8 @@ router.post('/registro', async (req, res) => {
            
         };
        await pool.query('INSERT INTO clientes set ?', [newregistro]);
-        res.send('recibido el registro');
+       req.flash('success', 'Nuevo Usuario agregado');
+        //res.redirect('./add');
 });
 
 

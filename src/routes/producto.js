@@ -31,18 +31,24 @@ router.get('/', async (req, res) => {
 
 });
 
+//CRUD ----------------------------------------------------------------------------
 router.get('/delete/:id', async (req, res) => {
     const {id} =req.params;
     await pool.query('DELETE FROM productos WHERE ID = ?', [id]);
+    req.flash('success', 'Se elimino correctamenete' )
     res.redirect('/links');
     
     //console.log(req.path.id); //cuando se envia el link para borrar el id lo identifca
    // res.send('DELETED');
 });
 
+
+
+
 router.get('/edit/:id', async (req, res) => { //crud para  editar desde la tabla productos y lo seleciona desde el id
     const {id} = req.params;
     const editproducto = await pool.query('SELECT * FROM productos WHERE id = ?', [id]);
+    
     res.render('links/editproducto', {editproducto: editproducto[0]});
 });
 router.post('/edit/:id', async (req, res) => {
@@ -55,7 +61,7 @@ router.post('/edit/:id', async (req, res) => {
          descripcion
     };
     await pool.query('UPDATE productos set ? WHERE id = ?', [newedit, id]);
-   
+    req.flash('success', 'El Producto ha sido editado');
     res.redirect('/links');
 });
 

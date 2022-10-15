@@ -5,7 +5,7 @@ const path = require('path');
 const flash = require('connect-flash');//
 const session = require('express-session');
 
-const mysqlstore = require('express-mysql-session') (session);//
+const MySQLStore = require('express-mysql-session') (session);//
 const { database } = require('./keys');//llamando a la bd
 const passport =  require('passport');
 
@@ -33,7 +33,7 @@ app.use(session({
    secret: 'textosecreto',
    resave: false,
     saveUninitialized: false,
-   store: new mysqlstore(database)
+   store: new MySQLStore (database)
 }));
 app.use(flash ());//
 app.use(morgan('dev'));//mesaje por consola //que llega al servidor 
@@ -49,7 +49,8 @@ app.use(passport.session());
 
 //global variables //que variables pueden ser accedidas desde la aplicacion 
 app.use((req, res, next) => {
-     app.locals.success = req.flash('success');//
+     app.locals.success = req.flash('success');
+     app.locals.message = req.flash('message');//
     next(); //toma la info del user y la redireciona para continuar 
 
 });
@@ -57,12 +58,12 @@ app.use((req, res, next) => {
 
 //Routes // se define las URL que hacen cuando se visite 
 app.use(require('./routes'));
-app.use('/links', require('./routes/authentication'));
+app.use(require('./routes/authentication'));
 app.use('/mainpage', require('./routes/mainpage'));
 app.use('/mainpage', require('./routes/stock'));//se agregan las rutas para que la pagina pueda hacer el get desde una nueva vista
 app.use('/links', require('./routes/links')); // estos codigo van a dar error si estan vacias las rutas 
 app.use('/links', require('./routes/producto'));
-app.use('/auth', require('./routes/perfil'));
+app.use(require('./routes/perfil'));
 
 
 //Public // todo el codigo que el navegador puede acceder //carpeta de css, cliente

@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark form-control me-2">
   <div class="container-fluid">
-    <a class="navbar-brand" href="/mainpage/page">EcoFit</a>
+    <a class="navbar-brand" href="#">EcoFit</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -9,10 +9,10 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="/links/add">Log In</a>
         </li>
-       <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/signup">Sing Un</a>
-        </li>
         
+        <li class="nav-item">
+          <a class="nav-link" href="">A</a>
+        </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle"  id="drop" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Contacto
@@ -31,23 +31,25 @@
 
 
 
-
-
-
 {{!--FORMULARIO USUARIO--}}
 <div class="container p-4 ">
-    <div class="card mx-auto" > {{!--cajista donde esta el formulario--}}
+    <div class="card" > {{!--cajista donde esta el formulario--}}
+       <div class="card text-center">
+        <h3>Sign In</h3>
+       </div>
         <div class="card-body">
-            <form action="/links/add" method="POST" >
+          <img src="" alt="Perfil" class="card-img-top mx-auto m-2 rounded-circle w-50">
+            <form action="/signin" method="POST" >
 
-                <div class="container p-4 col-md-4 form-group">
-                    <label for="text" class="form-label">Nombre Usuario:</label>
-                    <input type="text" class="form-control " placeholder="Nombre Usuario" name="nom_cliente" autofocus>
+              <div class="container p-4 col-md-4 form-group">
+                    <label for="text" class="form-label">Usuario:</label>
+                    <input type="text" class="form-control " id="" placeholder="Usuario" name="usuario" autofocus>
                 </div>
+                   
 
                 <div class="container p-4 col-md-4 form-group">
                     <label for="pwd" class="form-label">Password:</label>
-                    <input type="password" class="form-control" placeholder="Enter password" name="password" autofocus>
+                    <input type="password" class="form-control" id="" placeholder="Enter password" name="pass" autofocus>
                 </div>
 
                 <div class= "container p-4 col-md-4 form-group">

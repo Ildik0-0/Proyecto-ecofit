@@ -7,7 +7,7 @@ CREATE TABLE clientes (
     rut_cliente VARCHAR(50),
     email_cliente VARCHAR(320),
     contacto_cliente VARCHAR(50),
-    secreto VARCHAR(10) NOT NULL,
+    secreto VARCHAR(60),
    PRIMARY KEY (id));
 
 ALTER TABLE clientes
@@ -69,7 +69,7 @@ CREATE TABLE envios(
 
     id INT(11) NOT NULL,
     fecha_envio DATE,
-    transporte_id INT(11) NOT NULL,
+    transporte_id INT(11),
     direccion_envio VARCHAR(30),
     PRIMARY KEY (id),
     FOREIGN KEY (transporte_id) REFERENCES transportes(id)
@@ -88,7 +88,7 @@ CREATE TABLE compras(
     id INT(11) NOT NULL, 
     fecha_compra DATE,
     valor_compra DECIMAL(13,2),
-    producto_id INT(11) NOT NULL,
+    producto_id INT(11),
     PRIMARY KEY (id),
     FOREIGN KEY (producto_id) REFERENCES productos(id)
     
@@ -115,9 +115,22 @@ CREATE TABLE ventas(
 
 ALTER TABLE ventas
     MODIFY id INT NOT NULL AUTO_INCREMENT, AUTO_INCREMENT = 1;
+    
+   
+   
+  CREATE TABLE usuarios (
+	id INT(11) NOT NULL,
+	usuario VARCHAR(20),
+	nom_usuario VARCHAR(20),
+	pass VARCHAR(60),
+	email VARCHAR(30),
+	 PRIMARY KEY (id)
+);
 
-
-
+ALTER TABLE usuarios
+  MODIFY id INT NOT NULL AUTO_INCREMENT, AUTO_INCREMENT = 1;
+  
+ 
 
 !--no agregar este codigo al menos que les salga un erro de Error: ER_NOT_SUPPORTED_AUTH_MODE: esto querie decir que las verciones no son compatibles -
     ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'admin'; 

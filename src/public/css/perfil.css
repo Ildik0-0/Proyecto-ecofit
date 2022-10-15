@@ -1,0 +1,124 @@
+.editar
+{
+    padding: 10px;
+    width: 90px;
+    background: black;
+    color: aliceblue;
+    border-radius: 15px;
+    margin-left: 90%;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.editar a
+{
+    text-decoration: none;
+    color: white;
+}
+
+.Listados
+{
+    background: rgb(216, 216, 216);
+    color: white;
+    width: 100%;
+    display: flex;
+    margin: auto;
+    padding: 10px;
+}
+
+.Vendidos
+{
+    width: 700px;
+    height: 220px;
+    background: black;
+    margin: auto;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.Vendidos h3
+{
+    text-align: center;
+}
+
+.ver-mas
+{
+    padding: 10px;
+    background: #81d324;
+    width:100px;
+    margin-left: 80%;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.ver-mas a
+{
+    text-decoration: none;
+    color: white;
+}
+
+.Comprados
+{
+    width: 700px;
+    height: 220px;
+    background: black;
+    margin: auto;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.Comprados h3
+{
+    text-align: center;
+}
+
+.Tabla-Cont
+{
+    color: white;
+
+}
+
+.Tabla-Cont table
+{
+    color: white;
+    margin: auto;
+    width: 100%;
+    padding: 15px;
+    font-size: 15px;
+    text-align: left;
+}
+
+/* PRODUCTOS */
+
+.Mis-Productos
+{
+    width: 100%;
+    background: whitesmoke;
+}
+
+.Cont-Product-Empr
+{
+    width: 100%;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.Cont-Producto
+{
+    width: 250px;
+    background: black;
+    color: white;
+    margin: 30px;
+    padding: 15px;
+    position: relative;
+
+}
+
+.Cont-Producto img
+{
+    width: 200px;
+    margin: 10px;
+    align-items: center;
+}

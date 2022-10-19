@@ -3,12 +3,12 @@ const express = require('express');
 const router = express.Router();
 //const passport = require('passport');
 const passport = require('passport');
-
+const {isLoggedIn, isNotLoggedIn} =  require('../lib/auth');
 
 //INICIO SESION//
 
 //REGISTRO USER//
-router.get('/signup', (req, res) => {
+router.get('/signup', isNotLoggedIn, (req, res) => {
     res.render('auth/signup');
 });
 
@@ -16,33 +16,36 @@ router.get('/signup', (req, res) => {
 
 router.post('/signup', passport.authenticate('local.signup', {
   
-    successRedirect: '/perfil',
+    successRedirect: 'auth/perfil',
     failureRedirect: '/signup',
     failureFlash: true
 }));
 
 
-router.get('/signin', (req, res) =>{
+router.get('/signin', isNotLoggedIn, (req, res) =>{
     res.render('auth/signin');
 });
 
 router.post('/signin',  (req, res, next) =>{
     passport.authenticate('local.signin', {
-        successRedirect: '/perfil',
+        successRedirect: 'auth/perfil',
         failureRedirect: '/signin',
         failureFlash: true
     })(req, res, next);
 });
 
+router.get("/logout", (req, res, next) => {//funcion asincroma
+
+    req.logOut(req.user, err => {
+
+        if(err) return next(err);
+
+        res.redirect("/signin");  
+
+    });
+
+});
 
 
-router.get('/perfil', (req, res) =>{
-   // res.render('auth/perfil');
-  res.send('este es el perfil')
-});
-router.post('/perfil', async (req, res) => {
-    
-    res.send('estamos en perfil');
-});
 
 module.exports = router;

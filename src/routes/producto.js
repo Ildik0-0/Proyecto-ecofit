@@ -4,10 +4,10 @@ const { body } = require('express-validator');
 const router = express.Router();
 //conection to database
 const pool = require('../database');
-
+const {isLoggedIn} =  require('../lib/auth');
 //LISTA DE PRODUCTOS
 
-router.get('/listaproducto', (req, res) => {
+router.get('/listaproducto', isLoggedIn, (req, res) => {
     res.render('links/listaproducto');//dentro de la carpeta links
 
 });
@@ -23,7 +23,7 @@ router.post('/listaproducto', async (req, res) => {
 
 });
 
-router.get('/', async (req, res) => {
+router.get('/', isLoggedIn, async (req, res) => {
 
    const viewproducto = await pool.query('SELECT * FROM productos');
     
@@ -32,7 +32,7 @@ router.get('/', async (req, res) => {
 });
 
 //CRUD ----------------------------------------------------------------------------
-router.get('/delete/:id', async (req, res) => {
+router.get('/delete/:id', isLoggedIn, async (req, res) => {
     const {id} =req.params;
     await pool.query('DELETE FROM productos WHERE ID = ?', [id]);
     req.flash('success', 'Se elimino correctamenete' )
@@ -45,7 +45,7 @@ router.get('/delete/:id', async (req, res) => {
 
 
 
-router.get('/edit/:id', async (req, res) => { //crud para  editar desde la tabla productos y lo seleciona desde el id
+router.get('/edit/:id', isLoggedIn, async (req, res) => { //crud para  editar desde la tabla productos y lo seleciona desde el id
     const {id} = req.params;
     const editproducto = await pool.query('SELECT * FROM productos WHERE id = ?', [id]);
     

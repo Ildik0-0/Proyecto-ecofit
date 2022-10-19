@@ -26,6 +26,9 @@ app.engine('.hbs', engine({
 
 })); //esto es para las vista de la pagina //en la carpeta layouts
 app.set('view engine', '.hbs'); //el motor para utiliza el hbs
+app.use(express.static(path.join(__dirname, 'img')));
+
+
 
 //middlewares //para peticiones de usuario
 
@@ -41,7 +44,7 @@ app.use(express.urlencoded({extended: false}));
 app.use(express.json()); //para utilizar el json 
 app.use(passport.initialize());
 app.use(passport.session());
-
+app.use(express.static('images'));
 
 
 
@@ -51,6 +54,7 @@ app.use(passport.session());
 app.use((req, res, next) => {
      app.locals.success = req.flash('success');
      app.locals.message = req.flash('message');//
+     app.locals.user = req.user;
     next(); //toma la info del user y la redireciona para continuar 
 
 });
@@ -63,7 +67,8 @@ app.use('/mainpage', require('./routes/mainpage'));
 app.use('/mainpage', require('./routes/stock'));//se agregan las rutas para que la pagina pueda hacer el get desde una nueva vista
 app.use('/links', require('./routes/links')); // estos codigo van a dar error si estan vacias las rutas 
 app.use('/links', require('./routes/producto'));
-app.use(require('./routes/perfil'));
+app.use('/auth', require('./routes/perfil'));
+
 
 
 //Public // todo el codigo que el navegador puede acceder //carpeta de css, cliente
@@ -73,3 +78,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.listen(app.get('port'), () => { //utiliza la sintaxis del puerto anterior
     console.log('Server on port', app.get('port'));
 }); //servidor funcionando
+
+//RUTA DE IMAGENES 
+

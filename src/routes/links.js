@@ -5,6 +5,7 @@ const router = express.Router();
 const passport = require('passport');
 //conection to database
 const pool = require('../database');
+const { isLoggedIn } = require('../lib/auth');
 
 //INICIO SESION//
 router.get('/add', (req, res) => { //redireccionando al formulario /links/add
@@ -20,7 +21,7 @@ router.post('/add', async (req, res) => {
 
 
 //Crud Rsgistro
-router.get('/registro', (req, res) => {
+router.get('/registro', isLoggedIn, (req, res) => {
     res.render('links/registro'); //formulario usuario de registro
 });
 router.post('/registro', async (req, res) => {

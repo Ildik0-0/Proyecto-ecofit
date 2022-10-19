@@ -1,43 +1,36 @@
-<link rel="stylesheet" href="/css/perfil.css"> 
-
-<header class="header-corto">
-<nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark form-control me-2">
+{{!<nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark form-control me-2">
   <div class="container-fluid">
-    <a class="navbar-brand" href="/mainpage/page">EcoFit</a>
+    <a class="navbar-brand" href="#">EcoFit</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/links/add">Log In</a>
+          <a class="nav-link active" aria-current="page" href="">Nada</a>
         </li>
-       
-       <li class="nav-item">
-          <a class="nav-link" href="#">Nosotros</a>
-        </li>
+        
         <li class="nav-item">
-          <a class="nav-link" href="#">Servicios</a>
+          <a class="nav-link" href="">A</a>
         </li>
-
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle"  id="drop" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Contacto
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <li><a class="dropdown-item" href="/mainpage/pageadmin">Admin</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
-        </li>
+        
       </ul>
     </div>
   </div>
-</nav>
-</header>
+  
+</nav>}}
 
+<h1>Pagina Perfil</h1>
 
-
-
-    
-   
+<div class="container p-4">
+  <div class="row">
+    <div class="col-md-4 mx-auto">
+        <div class="card text-center">
+          <div class="card-body">
+            <h3>Welcome {{user.usuario}}</h3>
+            <h4>{{nom_usuario}}</h4>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>

@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark form-control me-2">
+{{!<nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark form-control me-2">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">EcoFit</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -7,26 +7,17 @@
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/links/add">Log In</a>
+          <a class="nav-link active" aria-current="page" href="/signup">SignUP</a>
         </li>
         
         <li class="nav-item">
           <a class="nav-link" href="">A</a>
         </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle"  id="drop" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Contacto
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <li><a class="dropdown-item" href="/mainpage/pageadmin">Admin</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
-        </li>
+        
       </ul>
     </div>
   </div>
-</nav>
+</nav>}}
 
 
 
@@ -38,7 +29,7 @@
         <h3>Sign In</h3>
        </div>
         <div class="card-body">
-          <img src="" alt="Perfil" class="card-img-top mx-auto m-2 rounded-circle w-50">
+          <img src="{{pelota.png}}" alt="Perfil" class="card-img-top mx-auto m-2 rounded-circle w-50">
             <form action="/signin" method="POST" >
 
               <div class="container p-4 col-md-4 form-group">

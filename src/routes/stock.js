@@ -4,6 +4,7 @@ const router = express.Router();
 //conection to database
 const pool = require('../database');
 
+
 router.get('/stock', (req, res) => { //redireccionando al formulario 
     res.render('mainpage/stock');
 
@@ -15,12 +16,13 @@ router.post('/stock', async (req, res) => {
 }); //para pedir del formulario
 
 router.get('/stock', async (req, res) => {
-    
+    const {id} = req.params;
     const viewstock = await pool.query('SELECT * FROM productos');
      
-     res.redirect('./stock', {viewstock});
+     res.render('./stock', {viewstock});
  
  });
+
 
 
 module.exports = router;

@@ -40,9 +40,17 @@
             <form action="/links/listaproducto" method="POST" >
 
                 <div class="container p-4 col-md-4 form-group">
-                    <label for="text" class="form-label">Nombre Producto:</label>
-                    <input type="text" class="form-control " id="" placeholder="Nombre Producto" name="nom_producto" autofocus>
-                </div>
+                      <div class="form-group col-md-4">
+                      <label for="inputState">Nombre Producto:</label>
+                      <select type="text" class="form-control " style="width: 9.5cm;" id="" placeholder="Nombre Producto" name="nom_producto">
+                        <option> Producto </option>
+                        <option>Aluminio</option>
+                        <option>Cobre</option>
+                        <option>Hierro</option>
+                        <option>Metal</option>
+                      </select>
+                    </div>
+                </div>                  
 
                 <div class="container p-4 col-md-4 form-group">
                     <label for="text" class="form-label">Precio:</label>
@@ -50,8 +58,18 @@
                 </div>
 
                 <div class="container p-4 col-md-4 form-group">
-                    <label for="text" class="form-label">Tipo:</label>
-                    <input type="text" class="form-control " id="" placeholder="Tipo" name="tipo_producto" autofocus>
+                    
+                    
+                      <div class="form-group col-md-4">
+                      <label for="inputState">Tipo:</label>
+                      <select type="text" class="form-control" style="width: 9.5cm;"  id="" placeholder="Tipo" name="tipo_producto">
+                        <option> Tipo </option>
+                        <option>Fierroso</option>
+                        <option>No Fierroso</option>
+                        
+                      </select>
+                     </div>
+                    
                 </div>
 
                  <div class="container p-4 col-md-4 form-group">

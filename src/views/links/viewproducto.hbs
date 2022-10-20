@@ -42,28 +42,33 @@
                 <div class="col-md-3" style="width: 18rem;">
                    
                     <div class="card-text-center">
-                        <div class="card-body border">
-
-                           
-                                <img src="" class="card-img-top" alt="imagen que no tengo">
+                        <div class="card-body border">                           
+                               
                                 <div class="card-body">
+                                   <img src="/img/aluminio.jpg" width="50" class="card-img-top" alt="imagen que no tengo">
                                     <h3 class="card-title">
                                         {{nom_producto}}
                                     </h3>
                                     <p class="card-text">
-                                        {{precio_producto}}
+                                         Precio: ${{precio_producto}}
+                                    </p>
+                                    <p class="card-text" >
+                                        Stock: {{stock_producto}}Kg
                                     </p>
                                     <p class="card-text">
-                                        {{descripcion}}
+                                         Descripcion: {{descripcion}}
                                     </p>
                                     <a href="/links/delete/{{id}}" class="btn btn-danger">Borrar</a>
                                    <a href="/links/edit/{{id}}" class="btn btn-primary">Editar</a>
                                 </div>    
                         
                         </div>          
+                        
                     
                     </div>   
                 </div>
+
+                
 
             {{else}}
             <div class="col-md-4 mx-auto" >

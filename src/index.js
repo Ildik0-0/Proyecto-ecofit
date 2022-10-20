@@ -17,6 +17,7 @@ require('./lib/passport');
 //setting//configuraciones --- en que puerto va a funcionar el servidor 
 app.set('port', process.env.PORT || 4000); //si existe un puerto que se use de lo contrario se toma el 4000
 app.set('views', path.join(__dirname, 'views')); //le digo al programa donde esta la carpeta views
+app.use(express.static(path.join(__dirname, 'public')));
 app.engine('.hbs', engine({
     defaultLayout: 'main', //archivo por defecto
     layoutsDir: path.join(app.get('views'), 'layouts'),  //join junta directorios //concatenado con layouts
@@ -26,7 +27,7 @@ app.engine('.hbs', engine({
 
 })); //esto es para las vista de la pagina //en la carpeta layouts
 app.set('view engine', '.hbs'); //el motor para utiliza el hbs
-app.use(express.static(path.join(__dirname, 'img')));
+
 
 
 
@@ -44,7 +45,7 @@ app.use(express.urlencoded({extended: false}));
 app.use(express.json()); //para utilizar el json 
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(express.static('images'));
+app.use(express.static('img'));
 
 
 
@@ -68,11 +69,11 @@ app.use('/mainpage', require('./routes/stock'));//se agregan las rutas para que 
 app.use('/links', require('./routes/links')); // estos codigo van a dar error si estan vacias las rutas 
 app.use('/links', require('./routes/producto'));
 app.use('/auth', require('./routes/perfil'));
-
+app.use('/static', express.static('public'))
 
 
 //Public // todo el codigo que el navegador puede acceder //carpeta de css, cliente
-app.use(express.static(path.join(__dirname, 'public')));
+
 
 //Starting the server 
 app.listen(app.get('port'), () => { //utiliza la sintaxis del puerto anterior

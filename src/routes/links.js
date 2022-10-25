@@ -39,9 +39,14 @@ router.post('/registro', async (req, res) => {
            
         };
        await pool.query('INSERT INTO clientes set ?', [newregistro]);
-       req.flash('success', 'Nuevo Usuario agregado');
-        res.redirect('./add');
+       req.flash('success', 'Nuevo Cliente agregado');
+      
+        res.render('mainpage/pageadmin');
 });
+
+
+
+
 
 
 

@@ -1,0 +1,63 @@
+
+{{!--FORMULARIO CLIENTE--}}
+
+<div class="container p-4 ">
+    <div class="card" > {{!--cajista donde esta el formulario--}}
+      
+        <div class="card-body">
+          <h1>Editar Cliente</h1>
+          
+            <form action="/cliente/edit/{{editcliente.id}}" method="POST" >
+              
+
+                <div class="container p-4 col-md-4 form-group">
+                    <label for="text" class="form-label">Nombre:</label>
+                    <input type="text" value="{{editcliente.nom_cliente}}" class="form-control " id="" placeholder="Nombre Usuario" name="nom_cliente" autofocus>
+                </div>
+
+                <div class="container p-4 col-md-4 form-group">
+                    <label for="text" class="form-label">Apellido:</label>
+                    <input type="text" value="{{editcliente.apellido_cliente}}" class="form-control " id="" placeholder="Apellido" name="apellido_cliente" autofocus>
+                </div>
+
+                <div class="container p-4 col-md-4 form-group">
+                    <label for="text" class="form-label">Correo:</label>
+                    <input type="email" value="{{editcliente.email_cliente}}" class="form-control " id="" placeholder="correo@gmail.com" name="email_cliente" autofocus>
+                </div>
+
+                 <div class="container p-4 col-md-4 form-group">
+                    <label for="text" class="form-label">Telefono:</label>
+                    <input type="text" value="{{editcliente.telefono_cliente}}" class="form-control " id="" placeholder="Telefono" name="telefono_cliente" autofocus>
+                </div>
+
+                  {{!validacion de tamaño de rut y formto }}
+                 <div class="container p-4 col-md-4 form-group">
+                    <label for="text" class="form-label">RUT:</label>
+                    <input type="text" value="{{editcliente.rut_cliente}}" class="form-control " id="" placeholder="12212121-k" name="rut_cliente" autofocus>
+                </div>
+
+                <div class="container p-4 col-md-4 form-group">
+                    <label for="text" class="form-label">Direccion:</label>
+                    <input type="text" value="{{editcliente.direccion_cliente}}" class="form-control " id="" placeholder="1221 av" name="direccion_cliente" autofocus>
+                </div>
+
+                <div class="container p-4 col-md-4 form-group">
+                    <label for="text" class="form-label">Contacto:</label>
+                    <input type="text" value="{{editcliente.contacto_cliente}}" class="form-control " id="" placeholder="Nombre Contacto" name="contacto_cliente" autofocus>
+                </div>    
+                {{!agregar validacion de las pass, tamaño y confirmacion de pass}}
+
+               
+
+                <div class= "container p-4 col-md-4 form-group">
+                     
+                    <button type="submit" class="btn btn-success  col-md-4">Submit</button>
+                </div>
+              
+            </form>
+          
+
+        
+      </div>
+    </div>
+</div>

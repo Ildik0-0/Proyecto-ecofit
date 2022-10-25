@@ -1,5 +1,7 @@
 //const { request } = require('express');
 //const { Passport } = require('passport');
+const e = require('connect-flash');
+const { validationResult } = require('express-validator');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const pool = require('../database');
@@ -12,17 +14,28 @@ passport.use('local.signin', new LocalStrategy ({
 }, async  (req, usuario, pass, done) =>{
    console.log(req.body);
   const rows = await pool.query('SELECT * FROM usuarios Where usuario = ?', [usuario]);
+  
   if(rows.length > 0){
       const user = rows[0];
       const validPassword = await helpers.matchPassword(pass, user.pass);
+      const error = validationResult(req);
+
+      if(!error.isEmpty()){
+        
+         return done(null, false, req.flash('message', 'Por favor colocar nombre y contraseña'));
+           
+      }
+
       if(validPassword){
          done(null, user, req.flash('success', 'Welcome ' + user.usuario));
       }else{
          done(null, false, req.flash('message', 'contraseña mala'));
       }
+     
   }else{
    return done(null, false, req.flash('message', 'El usuario no existe amigo'));
   }
+ 
 }));
 
 passport.use('local.signup', new LocalStrategy ({

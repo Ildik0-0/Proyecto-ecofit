@@ -1,0 +1,42 @@
+
+<div class="col-md-6">
+<table class="table">
+    {{#each viewcliente}}
+  <thead class="thead-dark">
+    <tr>
+    
+      <th scope="col">Nombre</th>
+      <th scope="col">Apellido</th>
+      <th scope="col">Rut</th>
+      <th scope="col">Email</th>
+      <th scope="col">Direccion</th>
+      <td scope="col">Editar</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      
+      <td>{{nom_cliente}}</td>
+      <td>{{apellido_cliente}}</td>
+      <td>{{rut_cliente}}</td>
+      <td>{{email_cliente}}</td>
+      <td>{{direccion_cliente}}</td>
+        <td>
+            <a href="/cliente/delete/{{id}}" class="btn btn-danger">Borrar</a>
+            <a href="/cliente/edit/{{id}}" class="btn btn-primary">Editar</a>
+        </td>
+    </tr>
+   
+
+            {{else}}
+            <div class="col-md-4 mx-auto" >
+                <div class="card card-body text-center">
+                    <p> No existen Clientes guardados vamos a quedar pobres </p>
+                    <a href="/cliente/registrocliente"> Agregar Cliente!</a>
+                </div>
+            </div>
+
+   {{/each}}
+</table>
+</div>
+

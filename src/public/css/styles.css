@@ -1,7 +1,7 @@
 body{
     background: beige;
     font-family: 'Oswald', sans-serif ;
-    overflow: hidden;
+    overflow: scroll;
 }
 
 .page{

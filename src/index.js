@@ -68,6 +68,7 @@ app.use('/mainpage', require('./routes/mainpage'));
 app.use('/mainpage', require('./routes/stock'));//se agregan las rutas para que la pagina pueda hacer el get desde una nueva vista
 app.use('/links', require('./routes/links')); // estos codigo van a dar error si estan vacias las rutas 
 app.use('/links', require('./routes/producto'));
+app.use('/cliente', require('./routes/cliente'));
 app.use('/auth', require('./routes/perfil'));
 app.use('/static', express.static('public'))
 

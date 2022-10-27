@@ -8,10 +8,18 @@
         <div class="card-body">
             <form action="/links/edit/{{editproducto.id}}" method="POST" >
 
-                <div class="container p-4 col-md-4 form-group">
-                    <label for="text" class="form-label">Nombre Producto:</label>
-                    <input type="text"  value="{{editproducto.nom_producto}}" class="form-control " placeholder="Nombre Producto" name="nom_producto" autofocus>
-                </div>
+                  <div class="container p-4 col-md-4 form-group">
+                      <div class="form-group col-md-4">
+                      <label for="inputState">Nombre Producto:</label>
+                      <select type="text" class="form-control " style="width: 9.5cm;" id="" placeholder="Nombre Producto" name="nom_producto">
+                        <option> Producto </option>
+                        <option>Aluminio</option>
+                        <option>Cobre</option>
+                        <option>Hierro</option>
+                        <option>Metal</option>
+                      </select>
+                    </div>
+                </div> 
 
                 <div class="container p-4 col-md-4 form-group">
                     <label for="text" class="form-label">Precio:</label>

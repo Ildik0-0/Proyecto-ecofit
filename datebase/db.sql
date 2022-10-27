@@ -130,7 +130,16 @@ ALTER TABLE ventas
 ALTER TABLE usuarios
   MODIFY id INT NOT NULL AUTO_INCREMENT, AUTO_INCREMENT = 1;
   
- 
+
+CREATE TABLE almacenes (
+    id INT(11) NOT NULL,
+    cantidad INT(30),
+    FOREIGN KEY (proveedor_id) REFERENCES proveedores(id),
+    FOREIGN KEY (producto_id) REFERENCES productos(id)
+);
+
+ ALTER TABLE almacenes
+  MODIFY id INT NOT NULL AUTO_INCREMENT, AUTO_INCREMENT = 1;
 
 !--no agregar este codigo al menos que les salga un erro de Error: ER_NOT_SUPPORTED_AUTH_MODE: esto querie decir que las verciones no son compatibles -
     ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'admin'; 

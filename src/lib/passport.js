@@ -1,7 +1,9 @@
 //const { request } = require('express');
 //const { Passport } = require('passport');
 const e = require('connect-flash');
-const { validationResult } = require('express-validator');
+const { body, validationResult } = require('express-validator');
+const express = require('express');
+
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const pool = require('../database');
@@ -14,18 +16,15 @@ passport.use('local.signin', new LocalStrategy ({
 }, async  (req, usuario, pass, done) =>{
    console.log(req.body);
   const rows = await pool.query('SELECT * FROM usuarios Where usuario = ?', [usuario]);
-  
+  //aqui se valida el password
+
+
+
   if(rows.length > 0){
       const user = rows[0];
       const validPassword = await helpers.matchPassword(pass, user.pass);
       const error = validationResult(req);
-
-      if(!error.isEmpty()){
-        
-         return done(null, false, req.flash('message', 'Por favor colocar nombre y contraseña'));
-           
-      }
-
+   
       if(validPassword){
          done(null, user, req.flash('success', 'Welcome ' + user.usuario));
       }else{
@@ -36,6 +35,8 @@ passport.use('local.signin', new LocalStrategy ({
    return done(null, false, req.flash('message', 'El usuario no existe amigo'));
   }
  
+  
+
 }));
 
 passport.use('local.signup', new LocalStrategy ({
@@ -50,6 +51,11 @@ const newUser = {
    nom_usuario,
    pass
 };
+
+
+
+
+
 newUser.pass = await helpers.encryptPassword(pass);
 const result = await pool.query('INSERT INTO usuarios SET ?', [newUser]);
 newUser.id = result.insertId;

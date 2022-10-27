@@ -15,7 +15,7 @@ require('./lib/passport');
 
 
 //setting//configuraciones --- en que puerto va a funcionar el servidor 
-app.set('port', process.env.PORT || 4000); //si existe un puerto que se use de lo contrario se toma el 4000
+app.set('port', process.env.PORT || 80); //si existe un puerto que se use de lo contrario se toma el 80
 app.set('views', path.join(__dirname, 'views')); //le digo al programa donde esta la carpeta views
 app.use(express.static(path.join(__dirname, 'public')));
 app.engine('.hbs', engine({

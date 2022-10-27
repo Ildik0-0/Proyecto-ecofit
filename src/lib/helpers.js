@@ -1,6 +1,6 @@
 const helpers = {};
 const bcrypt = require('bcryptjs');
-
+//encripta las contraseñas 
 helpers.encryptPassword = async (pass) =>{
 
    const salt = await bcrypt.genSalt(10);

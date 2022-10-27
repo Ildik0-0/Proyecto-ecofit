@@ -4,6 +4,8 @@ const router = express.Router();
 //const passport = require('passport');
 const passport = require('passport');
 const {isLoggedIn, isNotLoggedIn} =  require('../lib/auth');
+const { body, validationResult } = require('express-validator');
+const app = express();
 
 //INICIO SESION//
 
@@ -46,6 +48,8 @@ router.get("/logout", (req, res, next) => {//funcion asincroma
 
 });
 
+//intento de validacion a usuarios
 
+ 
 
 module.exports = router;
